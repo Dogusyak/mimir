@@ -5,8 +5,10 @@ import { useEffect, useState } from 'react'
 import {Card, createCard} from '../../models/cardModels/CardModel'
 import { CardList } from './components/CardList'
 import CardService from 'services/CardService'
+import { useNavigate } from "react-router-dom";
 
 export function Cards() {
+	const navigate = useNavigate()
 
 	const [cards, setCards] = useState<Card[]>([])
 	const [front, setFront] = useState<string>('')
@@ -27,11 +29,12 @@ export function Cards() {
 
 	const add = (obj: Card) => {
 		const add = async () => {
-			const card = await CardService.addCard(createCard(obj));
+			const response = await CardService.addCard(createCard(obj));
+			if (response === 'success') {
+				navigate('/cards') //Todo navigate does not function correctly.
+			}
 		}
-	  add()
-	//	const newList = [createCard(obj), ...cards]
-	//	setCards(newList)
+		add()
 	}
 
     const edit = (id: string) => {

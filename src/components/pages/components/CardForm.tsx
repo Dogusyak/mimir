@@ -15,7 +15,7 @@ export const CardForm = (props: Props) => {
   const add = () => {
     props.addCard({ front: props.front, back: props.back } as Card)
     props.setFront('')
-    props.setFront('')
+    props.setBack('')
   }
 
   return (

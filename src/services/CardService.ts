@@ -1,8 +1,10 @@
 import { Card } from "models/cardModels/CardModel";
 
+const Url = 'http://localhost:3003/api/cards';
+
  async function getCards() {
     try {
-        const response = await fetch('http://localhost:3003/api/cards', {
+        const response = await fetch(Url, {
           method: 'GET',
           headers: {
             accept: 'application/json',
@@ -20,24 +22,23 @@ import { Card } from "models/cardModels/CardModel";
       }
 }
 
-async function addCard(card:Card) {
+async function addCard(card: Card) {
   try {
-    let bodyparsed = JSON.stringify(card);
-    const response = await fetch('http://localhost:3003/api/cards', {
+    const options = {
       method: 'POST',
-      body: bodyparsed,
-      headers: {
-        accept: 'application/json',
-       
-      },
-    });
+      headers: new Headers({ accept: 'application/json', 'content-type': 'application/json', }),
+      body: JSON.stringify(card),
+    };
+
+    const response = await fetch(Url, options);
 
     if (!response.ok) {
       throw new Error(`Error! status: ${response.status}`);
     }
+    else {
+      return 'success';
+    }
 
-    const result = await response.json();
-    return result;
   } catch (err) {
     console.log(err);
   }
