@@ -17,9 +17,6 @@ export function CardEdit() {
 	const { id } = useParams<CardEditParams>()
 
 	const [card, setCard] = useState<Card>()
-	const [front, setFront] = useState<string>('')
-	const [back, setBack] = useState<string>('')
-
 
 	useEffect(() => {
 		const card = fetchCardDetails(String(id))
@@ -41,15 +38,11 @@ export function CardEdit() {
 		update()
 	}
 
-    return (
-        <>
-            <CardForm 
-            addCard={update}
-            updateCard={update}
-            setFront={setFront}
-			front={front}
-			setBack = {setBack}
-            back={back} />
-        </>
-    )
+	return (
+		<>
+			<CardForm
+				addCard={update}
+				updateCard={update} />
+		</>
+	)
 }

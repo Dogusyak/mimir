@@ -10,8 +10,6 @@ import { useNavigate } from "react-router-dom";
 export function Cards() {
 
 	const [CARD_DATA, setCards] = useState<Card[]>([])
-	const [front, setFront] = useState<string>('')
-	const [back, setBack] = useState<string>('')
 
 	useEffect(() => {  //With first rendering executed. It is a kind of on mount. When cards array has a new element then it will be executed again.
 		console.log('card mounted ')
@@ -41,21 +39,18 @@ export function Cards() {
 		setCards(newList)
 	}
 
-    return (
-        <>
-            <CardForm 
-            addCard={add}
-			updateCard={add}
-            setFront={setFront}
-			front={front}
-			setBack = {setBack}
-            back={back} />
-            <CardList
-            		cards={CARD_DATA}
-					remove={remove}
-            />
-        </>
-    )
+	return (
+		<>
+			<CardForm
+				addCard={add}
+				updateCard={add}
+			/>
+			<CardList
+				cards={CARD_DATA}
+				remove={remove}
+			/>
+		</>
+	)
 }
 
 const DefaultData: Card[] = [
