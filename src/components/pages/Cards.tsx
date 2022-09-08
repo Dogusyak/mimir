@@ -2,14 +2,25 @@ import { CardForm } from './components/CardForm'
 import {FancyList} from '../controls/FancyList'
 import {FancyItem} from '../controls/FancyItem'
 import { useEffect, useState } from 'react'
-import {Card, CARD_DATA, createCard} from '../../models/cardModels/CardModel'
+import {Card, createCard} from '../../models/cardModels/CardModel'
 import { CardList } from './components/CardList'
 import CardService from 'services/CardService'
 import { useNavigate } from "react-router-dom";
+import { useReducer } from 'react'
+import { cardReducer, initialCardPageState } from '../../Utils/cardReducer'
 
 export function Cards() {
+	const [state, dispatch] = useReducer(cardReducer, initialCardPageState)
 
-	const [CARD_DATA, setCards] = useState<Card[]>([])
+	const updateCards = (card: Card) =>
+	  dispatch({ type: 'update-card', card })
+  
+	const addCard = (card: Card) => dispatch({ type: 'add-card', card })
+  
+	const removeCard = (cardId: string) =>
+	  dispatch({ type: 'remove-card', cardId })
+
+	const [cards, setCards] = useState<Card[]>([])
 
 	useEffect(() => {  //With first rendering executed. It is a kind of on mount. When cards array has a new element then it will be executed again.
 		console.log('card mounted ')
@@ -35,7 +46,7 @@ export function Cards() {
 	}
 
     const remove = (id: string) => {
-		const newList = CARD_DATA.filter(card => card.id !== id)
+		const newList = cards.filter(card => card.id !== id)
 		setCards(newList)
 	}
 
@@ -46,7 +57,7 @@ export function Cards() {
 				updateCard={add}
 			/>
 			<CardList
-				cards={CARD_DATA}
+				cards={cards}
 				remove={remove}
 			/>
 		</>

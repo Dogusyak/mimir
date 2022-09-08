@@ -2,7 +2,7 @@ import { CardForm } from './components/CardForm'
 import {FancyList} from '../controls/FancyList'
 import {FancyItem} from '../controls/FancyItem'
 import { useEffect, useState } from 'react'
-import {Card, CARD_DATA, createCard} from '../../models/cardModels/CardModel'
+import {Card,createCard} from '../../models/cardModels/CardModel'
 import { CardList } from './components/CardList'
 import CardService from 'services/CardService'
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
@@ -24,8 +24,8 @@ export function CardEdit() {
 	  }, [id])
 
 	  function fetchCardDetails(id: string) {
-		const cards = CARD_DATA;
-		return cards.find(record => record.id === id)
+		//return cards.find(card => card.id === id)
+		return {} as Card
 	  }
 
     const update = (obj: Card) => {
