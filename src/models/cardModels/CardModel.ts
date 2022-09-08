@@ -11,3 +11,5 @@ export const createCard = (obj:Card): Card => ({
 	front: obj.front,
 	back: obj.back,
 })
+
+export const CARD_DATA: Card[] = []

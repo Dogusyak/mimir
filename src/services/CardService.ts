@@ -49,9 +49,14 @@ async function updateCard(card:Card) {
     const url = "http://localhost:3003/api/cards/"+{cardId}
  
     const response = await fetch(url, {method: 'PUT', body: JSON.stringify(card)});
-    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(`Error! status: ${response.status}`);
+    }
+    else {
+      return 'success';
+    }
    
-    console.log(data);
+    console.log(response.json());
 }
 
 async function deleteCard(card:Card) {

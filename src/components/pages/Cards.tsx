@@ -2,15 +2,14 @@ import { CardForm } from './components/CardForm'
 import {FancyList} from '../controls/FancyList'
 import {FancyItem} from '../controls/FancyItem'
 import { useEffect, useState } from 'react'
-import {Card, createCard} from '../../models/cardModels/CardModel'
+import {Card, CARD_DATA, createCard} from '../../models/cardModels/CardModel'
 import { CardList } from './components/CardList'
 import CardService from 'services/CardService'
 import { useNavigate } from "react-router-dom";
 
 export function Cards() {
-	const navigate = useNavigate()
 
-	const [cards, setCards] = useState<Card[]>([])
+	const [CARD_DATA, setCards] = useState<Card[]>([])
 	const [front, setFront] = useState<string>('')
 	const [back, setBack] = useState<string>('')
 
@@ -25,24 +24,20 @@ export function Cards() {
 		return () => {
 			console.log('card unmounted')
 		}
-	}, [CardService.getCards]);
+	}, []);
 
 	const add = (obj: Card) => {
 		const add = async () => {
 			const response = await CardService.addCard(createCard(obj));
 			if (response === 'success') {
-				navigate('/cards') //Todo navigate does not function correctly.
+				//TODO refresh list.
 			}
 		}
 		add()
 	}
 
-    const edit = (id: string) => {
-	//TODO
-	}
-
     const remove = (id: string) => {
-		const newList = cards.filter(card => card.id !== id)
+		const newList = CARD_DATA.filter(card => card.id !== id)
 		setCards(newList)
 	}
 
@@ -50,13 +45,13 @@ export function Cards() {
         <>
             <CardForm 
             addCard={add}
+			updateCard={add}
             setFront={setFront}
 			front={front}
 			setBack = {setBack}
             back={back} />
             <CardList
-            		cards={cards}
-                    edit={edit}
+            		cards={CARD_DATA}
 					remove={remove}
             />
         </>

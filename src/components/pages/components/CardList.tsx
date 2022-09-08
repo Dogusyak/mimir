@@ -3,6 +3,7 @@ import { Card } from '../../../models/cardModels/CardModel'
 import { Button } from '../../controls/Button'
 import { Label } from '../../controls/Label'
 import styled, { css, createGlobalStyle } from 'styled-components/macro'
+import { QueryNavLink } from '../../../helpers/QueryNavLink'
 
 
 const FancyList = styled.ul`
@@ -18,7 +19,6 @@ const FancyItem = styled.li`
 interface Props {
     cards: Card[]
     remove: (id: string) => void
-    edit: (id: string) => void
 }
 
 const Container = styled.div`
@@ -29,10 +29,10 @@ const Container = styled.div`
   justify-content: space-between;
 `
 
-export const CardList = ({ cards, remove, edit }: Props) => {
+export const CardList = ({ cards, remove }: Props) => {
 
     if (cards.length === 0) {
-        return <div>Keine Todos gefunden.</div>
+        return <div>Keine Cards gefunden.</div>
     }
 
     return (
@@ -45,8 +45,13 @@ export const CardList = ({ cards, remove, edit }: Props) => {
                                 <Label>{card.front}</Label>
                                 <Label>{card.back}</Label>
                                 <Container>
-                                <Button onClick={() => edit(card.id)}>Edit</Button>
-                                <Button onClick={() => remove(card.id)}>Delete</Button>
+                                    <QueryNavLink
+                                        to={card.id}
+                                        key={card.id}
+                                    >
+                                        <Button onClick={() => null}>Edit</Button>
+                                    </QueryNavLink>
+                                    <Button onClick={() => remove(card.id)}>Delete</Button>
                                 </Container>
                             </Container>
                         </FancyItem>
