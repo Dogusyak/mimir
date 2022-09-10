@@ -6,32 +6,7 @@ import { useEffect } from 'react'
 import CardService from 'services/CardService'
 
 export function cardReducer(state: State, action: Action): State {
-  switch (action.type) {
-    case 'get-cards':
-      let cards: Card[]
-      useEffect(() => {  //With first rendering executed. It is a kind of on mount. When cards array has a new element then it will be executed again.
-        console.log('card mounted ')
-        const onMount = async () => {
-          cards = await CardService.getCards()
-          state.cards = [...cards];
-        }
-        onMount()
-
-        return () => {
-          console.log('card unmounted')
-        }
-      }, []);
-      return state;
-
-      
-      case 'update-card':
-          return {
-              ...state, card: {
-                  id: action.card.id,
-                  front: action.card.front,
-                  back: action.card.back,
-              }
-          }
+  switch (action.type) {  
     case 'add-card':
       let existingCard = state.cards.find(
         card => card.id === action.card.id
@@ -52,6 +27,13 @@ export function cardReducer(state: State, action: Action): State {
           })
         }
       }
+      const add = async () => {
+        const response = await CardService.addCard(createCard(action.card));
+        if (response === 'success') {
+          //TODO show an alert.
+        }
+      }
+      add()
       return {
         ...state,
         cards: [...state.cards, createCard(action.card)]

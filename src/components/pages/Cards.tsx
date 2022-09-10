@@ -6,16 +6,16 @@ import {Card, createCard} from '../../models/cardModels/CardModel'
 import { CardList } from './components/CardList'
 import CardService from 'services/CardService'
 import { useNavigate } from "react-router-dom";
-import { useReducer } from 'react'
+import { useReducer,useContext } from 'react'
 import { cardReducer, initialCardPageState } from '../../Utils/cardReducer'
+import { CardsDispatchContext } from 'infrastructure/CardsContext';
 
 export function Cards() {
 	const [state, dispatch] = useReducer(cardReducer, initialCardPageState)
 
-	const updateCards = (card: Card) =>
-	  dispatch({ type: 'update-card', card })
+
   
-	const addCard = (card: Card) => dispatch({ type: 'add-card', card })
+	const add = (card: Card) => dispatch({ type: 'add-card', card })
   
 	const removeCard = (cardId: string) =>
 	  dispatch({ type: 'remove-card', cardId })
@@ -26,6 +26,8 @@ export function Cards() {
 		console.log('card mounted ')
 		const onMount = async () => {
 			const cards = await CardService.getCards()
+			//const setCards = CardsDispatchContext;
+			//setCards();
 			setCards(cards)
 		}
 		onMount()
@@ -35,15 +37,6 @@ export function Cards() {
 		}
 	}, []);
 
-	const add = (obj: Card) => {
-		const add = async () => {
-			const response = await CardService.addCard(createCard(obj));
-			if (response === 'success') {
-				//TODO refresh list.
-			}
-		}
-		add()
-	}
 
     const remove = (id: string) => {
 		const newList = cards.filter(card => card.id !== id)
