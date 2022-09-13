@@ -4,10 +4,14 @@ type AddCard = {
   type: 'add-card'
   card: Card
 }
+type UpdateCard = {
+  type: 'update-card'
+  card: Card
+}
 
 type RemoveCard = {
   type: 'remove-card'
   card: Card
 }
 
-export type Action = AddCard | RemoveCard
+export type Action = AddCard | UpdateCard | RemoveCard
