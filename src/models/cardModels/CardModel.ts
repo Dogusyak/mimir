@@ -6,6 +6,11 @@ export interface Card {
     back: string
 }
 
+export type CardContextType = {
+	cards: Card[];
+	setCards: (cards: Card[]) => void;
+};
+
 export const createCard = (obj:Card): Card => ({
 	id: uuid(),
 	front: obj.front,
