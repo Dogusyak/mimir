@@ -38,6 +38,18 @@ export function cardReducer(state: State, action: Action): State {
         ...state,
         // cards: [...state.cards, createCard(action.card)]
       }
+      case 'update-card':
+      const update = async () => {
+        const response = await CardService.updateCard(action.card);
+        if (response === 'success') {
+          //TODO show an alert.
+        }
+      }
+      update()
+      return {
+        ...state,
+        // cards: [...state.cards, createCard(action.card)]
+      }
     case 'remove-card':
       const remove = async () => {
         const response = await CardService.deleteCard(action.card);
