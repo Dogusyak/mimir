@@ -8,18 +8,12 @@ import CardService from 'services/CardService'
 import { useNavigate } from "react-router-dom";
 import { useReducer,useContext } from 'react'
 import { cardReducer, initialCardPageState } from '../../Utils/cardReducer'
-import { CardsDispatchContext } from 'infrastructure/CardsContext';
+//import { CardsDispatchContext } from 'infrastructure/CardsContext';
 
 export function Cards() {
+	const [front, setFront] = useState<string>('')
+	const [back, setBack] = useState<string>('')
 	const [state, dispatch] = useReducer(cardReducer, initialCardPageState)
-
-
-  
-	const add = (card: Card) => dispatch({ type: 'add-card', card })
-  
-	const removeCard = (cardId: string) =>
-	  dispatch({ type: 'remove-card', cardId })
-
 	const [cards, setCards] = useState<Card[]>([])
 
 	useEffect(() => {  //With first rendering executed. It is a kind of on mount. When cards array has a new element then it will be executed again.
@@ -37,17 +31,20 @@ export function Cards() {
 		}
 	}, []);
 
-
-    const remove = (id: string) => {
-		const newList = cards.filter(card => card.id !== id)
-		setCards(newList)
-	}
+	const add = (card: Card) => dispatch({ type: 'add-card', card })
+  
+	const remove = (cardId: string) =>
+	  dispatch({ type: 'remove-card', cardId })
 
 	return (
 		<>
 			<CardForm
 				addCard={add}
 				updateCard={add}
+				setFront={setFront}
+				front={front}
+				setBack={setBack}
+				back={back}
 			/>
 			<CardList
 				cards={cards}
@@ -56,21 +53,3 @@ export function Cards() {
 		</>
 	)
 }
-
-const DefaultData: Card[] = [
-	{
-		id: 'f64b0f31-7521-4695-b66a-f82a10522e46',
-		front: 'Vergangenheit',
-		back: 'Past',
-	},
-	{
-		id: 'ecde4cc2-6a16-442d-bad7-ae6441191f27',
-		front: 'Gegenwart',
-		back: 'Present',
-	},
-	{
-		id: 'dcac5e25-99bf-4939-9f7c-734bfb18ec0c',
-        front: 'Zukunft',
-		back: 'Future',
-	}
-]
