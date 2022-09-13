@@ -1,3 +1,4 @@
+import { useReducer } from 'react'
 import { CardForm } from './components/CardForm'
 import { FancyList } from '../controls/FancyList'
 import { FancyItem } from '../controls/FancyItem'
@@ -6,6 +7,7 @@ import { Card, createCard } from '../../models/cardModels/CardModel'
 import { CardList } from './components/CardList'
 import CardService from 'services/CardService'
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { cardReducer, initialCardPageState } from '../../Utils/cardReducer'
 
 export function CardEdit() {
 	const navigate = useNavigate()
@@ -16,6 +18,7 @@ export function CardEdit() {
 
 	const { id } = useParams<CardEditParams>()
 
+	const [state, dispatch] = useReducer(cardReducer, initialCardPageState)
 	const [card, setCard] = useState<Card>()
 	const [front, setFront] = useState<string>('')
 	const [back, setBack] = useState<string>('')
@@ -30,15 +33,7 @@ export function CardEdit() {
 		return {} as Card
 	}
 
-	const update = (obj: Card) => {
-		const update = async () => {
-			const response = await CardService.updateCard(obj);
-			if (response === 'success') {
-				navigate('/cards') //Todo navigate does not function correctly.
-			}
-		}
-		update()
-	}
+	const update = (card: Card) => dispatch({ type: 'update-card', card })
 
 	return (
 		<>
