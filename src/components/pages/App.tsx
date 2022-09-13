@@ -6,15 +6,14 @@ import { Layout } from '../widgets/Layout'
 import { Home } from '../widgets/Home'
 import { Cards } from './Cards';
 import { CardEdit } from './CardEdit';
-import { CardsProvider } from 'infrastructure/CardsContext';
-
-
+import { CardsContext } from 'infrastructure/CardsContext';
 
 function App() {
 
+  const [cards, setCards] = React.useState([]);
   return (
     <>
-      <CardsProvider>
+      {/* <CardsContext.Provider value={{cards,setCards}}> */}
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
@@ -30,7 +29,7 @@ function App() {
             />
           </Route>
         </Routes>
-      </CardsProvider>
+      {/* </CardsProvider> */}
 
     </>
   )
