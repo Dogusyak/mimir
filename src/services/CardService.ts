@@ -2,24 +2,24 @@ import { Card } from "models/cardModels/CardModel";
 
 const Url = 'http://localhost:3003/api/cards';
 
- async function getCards() {
-    try {
-        const response = await fetch(Url, {
-          method: 'GET',
-          headers: {
-            accept: 'application/json',
-          },
-        });
-    
-        if (!response.ok) {
-          throw new Error(`Error! status: ${response.status}`);
-        }
-    
-        const result = await response.json();
-        return result;
-      } catch (err) {
-        console.log(err);
-      }
+async function getCards() {
+  try {
+    const response = await fetch(Url, {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error! status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    return result;
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 async function addCard(card: Card) {
@@ -44,37 +44,35 @@ async function addCard(card: Card) {
   }
 }
 
-async function updateCard(card:Card) {
-    const cardId = card.id
-    const url = "http://localhost:3003/api/cards/"+{cardId}
- 
-    const response = await fetch(url, {method: 'PUT', body: JSON.stringify(card)});
-    if (!response.ok) {
-      throw new Error(`Error! status: ${response.status}`);
-    }
-    else {
-      return 'success';
-    }
-   
-    console.log(response.json());
+async function updateCard(card: Card) {
+  const cardId = card.id
+
+  const response = await fetch(Url + { cardId }, { method: 'PUT', body: JSON.stringify(card) });
+  if (!response.ok) {
+    throw new Error(`Error! status: ${response.status}`);
+  }
+  else {
+    return 'success';
+  }
+
+  console.log(response.json());
 }
 
-async function deleteCard(card:Card) {
-    const cardId = card.id
-    const url = "http://localhost:3003/api/cards/"+{cardId}
- 
-    const response = await fetch(url, {method: 'DELETE', body: JSON.stringify(card)});
-    const data = await response.json();
-   
-    console.log(data);
+async function deleteCard(card: Card) {
+  const cardId = card.id
+
+  const response = await fetch(Url + { cardId }, { method: 'DELETE', body: JSON.stringify(card) });
+  const data = await response.json();
+
+  console.log(data);
 }
 
 
 const CardService = {
-    getCards,
-    addCard,
-    updateCard,
-    deleteCard,
+  getCards,
+  addCard,
+  updateCard,
+  deleteCard,
 };
 
 export default CardService;
