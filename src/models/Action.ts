@@ -7,7 +7,7 @@ type AddCard = {
 
 type RemoveCard = {
   type: 'remove-card'
-  cardId: string
+  card: Card
 }
 
 export type Action = AddCard | RemoveCard

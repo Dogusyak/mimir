@@ -33,8 +33,8 @@ export function Cards() {
 
 	const add = (card: Card) => dispatch({ type: 'add-card', card })
   
-	const remove = (cardId: string) =>
-	  dispatch({ type: 'remove-card', cardId })
+	const remove = (card: Card) =>
+	  dispatch({ type: 'remove-card', card })
 
 	return (
 		<>

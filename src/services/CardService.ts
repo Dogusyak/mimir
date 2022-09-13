@@ -47,24 +47,30 @@ async function addCard(card: Card) {
 async function updateCard(card: Card) {
   const cardId = card.id
 
-  const response = await fetch(Url + { cardId }, { method: 'PUT', body: JSON.stringify(card) });
-  if (!response.ok) {
-    throw new Error(`Error! status: ${response.status}`);
+  try {
+    const response = await fetch(Url + { cardId }, { method: 'PUT', body: JSON.stringify(card) });
+    if (!response.ok) {
+      throw new Error(`Error! status: ${response.status}`);
+    }
+    else {
+      return 'success';
+    }
   }
-  else {
-    return 'success';
+  catch (err) {
+    console.log(err);
   }
-
-  console.log(response.json());
 }
 
 async function deleteCard(card: Card) {
   const cardId = card.id
 
   const response = await fetch(Url + { cardId }, { method: 'DELETE', body: JSON.stringify(card) });
-  const data = await response.json();
-
-  console.log(data);
+  if (!response.ok) {
+    throw new Error(`Error! status: ${response.status}`);
+  }
+  else {
+    return 'success';
+  }
 }
 
 

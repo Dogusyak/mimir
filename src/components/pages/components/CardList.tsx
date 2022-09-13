@@ -18,7 +18,7 @@ const FancyItem = styled.li`
 
 interface Props {
     cards: Card[]
-    remove: (id: string) => void
+    remove: (card: Card) => void
 }
 
 const Container = styled.div`
@@ -51,7 +51,7 @@ export const CardList = ({ cards, remove }: Props) => {
                                     >
                                         <Button onClick={() => null}>Edit</Button>
                                     </QueryNavLink>
-                                    <Button onClick={() => remove(card.id)}>Delete</Button>
+                                    <Button onClick={() => remove(card)}>Delete</Button>
                                 </Container>
                             </Container>
                         </FancyItem>
