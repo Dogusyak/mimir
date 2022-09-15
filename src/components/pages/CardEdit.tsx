@@ -1,13 +1,9 @@
-import { useReducer } from 'react'
+import { useContext } from 'react'
 import { CardForm } from './components/CardForm'
-import { FancyList } from '../controls/FancyList'
-import { FancyItem } from '../controls/FancyItem'
 import { useEffect, useState } from 'react'
-import { Card, createCard } from '../../models/cardModels/CardModel'
-import { CardList } from './components/CardList'
-import CardService from 'services/CardService'
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { cardReducer, initialCardPageState } from '../../Utils/cardReducer'
+import { Card } from '../../models/CardModel'
+import { useNavigate, useParams } from "react-router-dom";
+import { AppContext } from 'store/context';
 
 export function CardEdit() {
 	const navigate = useNavigate()
@@ -18,22 +14,21 @@ export function CardEdit() {
 
 	const { id } = useParams<CardEditParams>()
 
-	const [state, dispatch] = useReducer(cardReducer, initialCardPageState)
-	const [card, setCard] = useState<Card>()
+	const { cards, dispatch } = useContext(AppContext)
 	const [front, setFront] = useState<string>('')
 	const [back, setBack] = useState<string>('')
 
 	useEffect(() => {
 		const card = fetchCardDetails(String(id))
-		setCard(card)
+		setFront(card ? card.front : '');
+		setBack(card ? card.back : '');
 	}, [id])
 
 	function fetchCardDetails(id: string) {
-		//return cards.find(card => card.id === id)
-		return {} as Card
+		return cards.find(card => card.id === id)
 	}
 
-	const update = (card:Card) => dispatch({ type: 'update-card', card })
+	const update = (card: Card) => dispatch({ type: 'update-card', card })
 
 	return (
 		<>
@@ -45,7 +40,6 @@ export function CardEdit() {
 				setBack={setBack}
 				back={back}
 				id={id} />
-	
 		</>
 	)
 }

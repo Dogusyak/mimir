@@ -1,5 +1,5 @@
-import { Card } from "models/cardModels/CardModel";
-import { Answer } from "models/gameLoopModels/Answer";
+import { Card } from "models/CardModel";
+import { Answer } from "models/Answer";
 
 async function getCurrentGame() {
     const response = await fetch('http://localhost:3003/api/game');

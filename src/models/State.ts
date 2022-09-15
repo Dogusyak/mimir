@@ -1,6 +1,5 @@
-import { Card } from './cardModels/CardModel'
+import { Card } from './CardModel'
 
 export interface State {
-  card: Card
   cards: Card[]
 }

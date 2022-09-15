@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react'
-import { Card } from '../../../models/cardModels/CardModel'
+import { Card } from '../../../models/CardModel'
 import { Button } from '../../controls/Button'
 import { Label } from '../../controls/Label'
 import styled, { css, createGlobalStyle } from 'styled-components/macro'
@@ -38,7 +38,6 @@ export const CardList = ({ cards, remove }: Props) => {
     return (
         <div>
             {cards.map(card => (
-                <Fragment key={card.id}>
                     <FancyList key={card.id}>
                         <FancyItem>
                             <Container>
@@ -56,7 +55,6 @@ export const CardList = ({ cards, remove }: Props) => {
                             </Container>
                         </FancyItem>
                     </FancyList>
-                </Fragment>
             ))}
         </div>
     )

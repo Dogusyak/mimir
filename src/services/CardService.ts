@@ -1,4 +1,4 @@
-import { Card } from "models/cardModels/CardModel";
+import { Card } from "models/CardModel";
 
 const Url = 'http://localhost:3003/api/cards';
 

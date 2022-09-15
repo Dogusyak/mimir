@@ -1,4 +1,4 @@
-import {Card} from '../models/cardModels/CardModel'
+import {Card} from '../models/CardModel'
 export const DefaultData: Card[] = [
 	{
 		id: 'f64b0f31-7521-4695-b66a-f82a10522e46',

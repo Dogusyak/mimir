@@ -1,17 +1,21 @@
-import { Card } from './cardModels/CardModel'
+import { Card } from './CardModel'
 
-type AddCard = {
+type SetCardsAction = {
+  type: 'set-cards'
+  cards: Card[]
+}
+type AddCardAction = {
   type: 'add-card'
   card: Card
 }
-type UpdateCard = {
+type UpdateCardAction = {
   type: 'update-card'
   card: Card
 }
 
-type RemoveCard = {
+type RemoveCardAction = {
   type: 'remove-card'
   card: Card
 }
 
-export type Action = AddCard | UpdateCard | RemoveCard
+export type Action = SetCardsAction | AddCardAction | UpdateCardAction | RemoveCardAction

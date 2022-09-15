@@ -1,14 +1,14 @@
 import styled from 'styled-components/macro'
 import { Button } from '../../controls/Button'
 import { TextInput } from 'components/controls/TextInput'
-import { Card } from '../../../models/cardModels/CardModel'
+import { Card } from '../../../models/CardModel'
 
 interface Props {
   addCard: (card: Card) => void
   updateCard: (card: Card) => void
   setFront: (front: string) => void
   setBack: (back: string) => void
-  id?:string|undefined
+  id?: string
   front: string
   back: string
 }
@@ -22,7 +22,7 @@ export const CardForm = (props: Props) => {
   }
 
   const update = () => {
-    props.updateCard({id:props.id, front: props.front, back: props.back } as Card)
+    props.updateCard({ id: props.id, front: props.front, back: props.back } as Card)
     props.setFront('')
     props.setBack('')
   }
