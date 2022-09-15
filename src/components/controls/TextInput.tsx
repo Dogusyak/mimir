@@ -7,19 +7,19 @@ interface Props {
 }
 
 const TextInputStyle = styled.input`
+flex: 1;
 height: 40px;
 border: 2px solid #3aafa9;
 background: #feffff;
-padding: 0 10px;
+padding: 0 16px;
 outline: none;
-font-size: 18px;
+font-size: 25px;
 :focus {
 	border-color: #2b7a78;
 }
 `
 
 export const TextInput = ({ onChange, value, placeholder }: Props) => (
-
 	<TextInputStyle
 		type="text"
 		onChange={e => onChange(e.target.value)}
