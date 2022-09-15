@@ -33,7 +33,7 @@ export function CardEdit() {
 		return {} as Card
 	}
 
-	const update = (card: Card) => dispatch({ type: 'update-card', card })
+	const update = (card:Card) => dispatch({ type: 'update-card', card })
 
 	return (
 		<>
@@ -43,7 +43,9 @@ export function CardEdit() {
 				setFront={setFront}
 				front={front}
 				setBack={setBack}
-				back={back} />
+				back={back}
+				id={id} />
+	
 		</>
 	)
 }

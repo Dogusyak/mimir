@@ -48,7 +48,14 @@ async function updateCard(card: Card) {
   const cardId = card.id
 
   try {
-    const response = await fetch(Url + { cardId }, { method: 'PUT', body: JSON.stringify(card) });
+
+    const options = {
+      method: 'PUT',
+      headers: new Headers({ accept: 'application/json', 'content-type': 'application/json', }),
+      body: JSON.stringify(card),
+    };
+
+    const response = await fetch(Url + '/' + cardId, options);
     if (!response.ok) {
       throw new Error(`Error! status: ${response.status}`);
     }
@@ -64,8 +71,14 @@ async function updateCard(card: Card) {
 async function deleteCard(card: Card) {
   const cardId = card.id
 
+  const options = {
+    method: 'DELETE',
+    headers: new Headers({ accept: 'application/json', 'content-type': 'application/json', }),
+    body: JSON.stringify(card),
+  };
+
   try {
-    const response = await fetch(Url + { cardId }, { method: 'DELETE', body: JSON.stringify(card) });
+    const response = await fetch(Url + '/' + cardId, options);
     if (!response.ok) {
       throw new Error(`Error! status: ${response.status}`);
     }

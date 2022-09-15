@@ -7,6 +7,7 @@ interface Props {
   updateCard: (card: Card) => void
   setFront: (front: string) => void
   setBack: (back: string) => void
+  id?:string|undefined
   front: string
   back: string
 }
@@ -20,7 +21,7 @@ export const CardForm = (props: Props) => {
   }
 
   const update = () => {
-    props.updateCard({ front: props.front, back: props.back } as Card)
+    props.updateCard({id:props.id, front: props.front, back: props.back } as Card)
     props.setFront('')
     props.setBack('')
   }
