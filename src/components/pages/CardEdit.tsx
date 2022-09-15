@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { Card } from '../../models/CardModel'
 import { useNavigate, useParams } from "react-router-dom";
 import { AppContext } from 'store/context';
+import CardService from 'services/CardService';
 
 export function CardEdit() {
 	const navigate = useNavigate()
@@ -28,7 +29,17 @@ export function CardEdit() {
 		return cards.find(card => card.id === id)
 	}
 
-	const update = (card: Card) => dispatch({ type: 'update-card', card })
+	const update = (card: Card) => {
+		const update = async () => {
+			const response = await CardService.updateCard(card);
+			if (response === 'success') {
+				//TODO show an alert.
+				dispatch({ type: 'update-card', card })
+				navigate('/cards')
+			}
+		}
+		update()
+	}
 
 	return (
 		<>

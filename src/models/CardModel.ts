@@ -12,7 +12,7 @@ export type CardContextType = {
 };
 
 export const createCard = (obj:Card): Card => ({
-	id: uuid(),
+	id: uuid(), //TODO id will be removed.
 	front: obj.front,
 	back: obj.back,
 })

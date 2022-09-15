@@ -1,6 +1,6 @@
 import { CardForm } from './components/CardForm'
 import { useEffect, useState, useContext } from 'react'
-import { Card } from '../../models/CardModel'
+import { Card, createCard } from '../../models/CardModel'
 import { CardList } from './components/CardList'
 import CardService from 'services/CardService'
 import { AppContext } from 'store/context'
@@ -23,9 +23,28 @@ export function Cards() {
 		}
 	}, []);
 
-	const add = (card: Card) => dispatch({ type: 'add-card', card })
+	const add = (card: Card) => {
+		const createdCard =createCard(card);
+		const add = async () => {
+			const response = await CardService.addCard(createdCard);
+			if (response === 'success') {
+				//TODO show an alert.
+				dispatch({ type: 'add-card', createdCard })
+			}
+		}
+		add()
+	}
 
-	const remove = (card: Card) => dispatch({ type: 'remove-card', card })
+	const remove = (card: Card) => {
+		const remove = async () => {
+			const response = await CardService.deleteCard(card);
+			if (response === 'success') {
+				//TODO show an alert.
+				dispatch({ type: 'remove-card', card })
+			}
+		}
+		remove()
+	}
 
 	return (
 		<>
