@@ -12,7 +12,7 @@ export function cardReducer(state: State, action: Action): State {
     case 'add-card':
       return {
         ...state,
-        cards: [...state.cards, action.createdCard]
+        cards: [...state.cards, action.card]
       }
     case 'update-card':
       return {

@@ -6,7 +6,7 @@ type SetCardsAction = {
 }
 type AddCardAction = {
   type: 'add-card'
-  createdCard: Card
+  card: Card
 }
 type UpdateCardAction = {
   type: 'update-card'

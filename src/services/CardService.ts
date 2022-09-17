@@ -36,7 +36,7 @@ async function addCard(card: Card) {
       throw new Error(`Error! status: ${response.status}`);
     }
     else {
-      return 'success';
+      return response.json();
     }
 
   } catch (err) {

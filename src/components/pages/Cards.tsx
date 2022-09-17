@@ -24,12 +24,12 @@ export function Cards() {
 	}, []);
 
 	const add = (card: Card) => {
-		const createdCard =createCard(card);
+
 		const add = async () => {
-			const response = await CardService.addCard(createdCard);
-			if (response === 'success') {
-				//TODO show an alert.
-				dispatch({ type: 'add-card', createdCard })
+			const response = await CardService.addCard(card);
+			if (response) {
+				const card = response;
+				dispatch({ type: 'add-card', card })
 			}
 		}
 		add()
