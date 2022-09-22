@@ -1,14 +1,14 @@
 import { CardForm } from './components/CardForm'
 import { useEffect, useState, useContext } from 'react'
-import { Card, createCard } from '../../models/CardModel'
+import { Card } from '../../models/CardModel'
 import { CardList } from './components/CardList'
 import CardService from 'services/CardService'
-import { AppContext } from 'store/context'
+import { CardContext } from 'store/cardContext'
 
 export function Cards() {
 	const [front, setFront] = useState<string>('')
 	const [back, setBack] = useState<string>('')
-	const { cards, dispatch } = useContext(AppContext)
+	const { cards, dispatch } = useContext(CardContext)
 
 	useEffect(() => {
 		console.log('cards mounted ')

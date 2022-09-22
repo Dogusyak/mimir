@@ -4,12 +4,12 @@ const Url = 'http://localhost:3003/api/cards';
 
 async function getCards() {
   try {
-    const response = await fetch(Url, {
+    const options = {
       method: 'GET',
-      headers: {
-        accept: 'application/json',
-      },
-    });
+      headers: new Headers({ accept: 'application/json', 'content-type': 'application/json', }),
+    };
+
+    const response = await fetch(Url, options);
 
     if (!response.ok) {
       throw new Error(`Error! status: ${response.status}`);

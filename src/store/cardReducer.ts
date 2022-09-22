@@ -1,6 +1,5 @@
-import { Action } from 'models/Action'
-import { State } from 'models/State'
-import { createCard } from 'models/CardModel'
+import { Action } from 'models/CardAction'
+import { State } from 'models/CardState'
 
 export function cardReducer(state: State, action: Action): State {
   switch (action.type) {

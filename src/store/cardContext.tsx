@@ -1,5 +1,5 @@
-import { Action } from 'models/Action'
-import { State } from 'models/State'
+import { Action } from 'models/CardAction'
+import { State } from 'models/CardState'
 import { createContext, ReactNode, useReducer } from 'react'
 import { cardReducer, InitialAppState } from './cardReducer'
 
@@ -12,13 +12,13 @@ const initialState: AppState = {
   dispatch: (action: Action) => {}
 }
 
-export const AppContext = createContext<AppState>(initialState)
+export const CardContext = createContext<AppState>(initialState)
 
 interface Props {
   children: ReactNode
 }
 
-export const AppProvider = ({ children }: Props) => {
+export const CardProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(cardReducer, initialState)
 
   const store = {
@@ -28,5 +28,5 @@ export const AppProvider = ({ children }: Props) => {
 
   console.log('render AppProvider', state.cards)
 
-  return <AppContext.Provider value={store}>{children}</AppContext.Provider>
+  return <CardContext.Provider value={store}>{children}</CardContext.Provider>
 }

@@ -3,7 +3,7 @@ import { CardForm } from './components/CardForm'
 import { useEffect, useState } from 'react'
 import { Card } from '../../models/CardModel'
 import { useNavigate, useParams } from "react-router-dom";
-import { AppContext } from 'store/context';
+import { CardContext } from 'store/cardContext';
 import CardService from 'services/CardService';
 
 export function CardEdit() {
@@ -15,7 +15,7 @@ export function CardEdit() {
 
 	const { id } = useParams<CardEditParams>()
 
-	const { cards, dispatch } = useContext(AppContext)
+	const { cards, dispatch } = useContext(CardContext)
 	const [front, setFront] = useState<string>('')
 	const [back, setBack] = useState<string>('')
 
