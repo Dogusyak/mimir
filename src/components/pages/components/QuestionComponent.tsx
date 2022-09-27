@@ -1,13 +1,22 @@
+import { Answer } from "models/AnswerModel"
 import { Game } from "models/GameModel"
+import { QuestionForm } from "./QuestionForm"
 
 interface Props {
-  game: Game
+  submit: (answer: Answer) => void
+  setAnswer: (answer: string) => void
+  front: string
+  answer: string
 }
 
-export function QuestionComponent(game : Props) {
+export function QuestionComponent(props: Props) {
   return (
     <>
-      You are in question component game
+      <QuestionForm submit={props.submit}
+        setAnswer={props.setAnswer}
+        front={props.front}
+        answer={props.answer}
+      />
     </>
   )
 }

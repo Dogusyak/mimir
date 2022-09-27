@@ -1,4 +1,4 @@
-import styled, { css, createGlobalStyle } from 'styled-components/macro'
+import styled from 'styled-components/macro'
 
 const StyledFancyList = styled.ul`
 border: 1px solid lightblue;

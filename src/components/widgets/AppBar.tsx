@@ -1,6 +1,8 @@
 import styled from 'styled-components/macro'
+import { useContext } from 'react'
 import { AppBarButton } from '../controls/AppBarButton'
 import { QueryNavLink } from '../../helpers/QueryNavLink'
+import { GameLoopContext } from 'store/gameLoopContext'
 
 interface Props {
   newGame: () => void
@@ -23,11 +25,34 @@ const Header = styled.div`
 `
 
 export const AppBar = () => {
+  const { game } = useContext(GameLoopContext)
+  let text = 'New Game';
+  if (game.solved) {
+    const index = game.solved.length + 1;
+    switch (index) {
+      case 1:
+      case 2:
+      case 3:
+        {
+          text = "Solve #" +  index ;
+          break;
+        }
+      case 4: {
+        text = "Finished"
+        break;
+      }
+      default: {
+        text = "Something went wrong!"
+        break;
+      }
+    }
+  }
+
   return <Bar><Header>✨ Mimir</Header>
     <QueryNavLink
       to="/"
     >
-      <AppBarButton>New Game</AppBarButton>
+      <AppBarButton>{text}</AppBarButton>
     </QueryNavLink>
 
     <QueryNavLink
