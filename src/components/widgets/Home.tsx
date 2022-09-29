@@ -6,6 +6,7 @@ import { GameLoopContext } from 'store/gameLoopContext'
 import { QuestionComponent } from 'components/pages/components/QuestionComponent'
 import { GameSummaryComponent } from 'components/pages/components/GameSummaryComponent'
 import { Answer } from 'models/AnswerModel'
+import { Game } from 'models/GameModel'
 
 export function Home() {
 
@@ -13,7 +14,6 @@ export function Home() {
   const { game, dispatch } = useContext(GameLoopContext)
 
   const submit = (answer: Answer) => {
-
     const submit = async () => {
       const response = await GameLoopService.SetAnswerForCurrentCard(answer);
       if (response) {
@@ -26,6 +26,9 @@ export function Home() {
 
   const startNewGame = () => {
     const startNewGame = async () => {
+      if (game) {
+        deleteCurrentGame();
+      }
       const response = await GameLoopService.startANewGame();
       if (response) {
         const game = response;
@@ -34,10 +37,30 @@ export function Home() {
     }
     startNewGame()
   }
-  return <Main>{!game.solved ? (<InitialGameComponent startNewGame={startNewGame} />) : game.solved.length > 2 ? <GameSummaryComponent game={game} /> : (<QuestionComponent submit={submit}
-    setAnswer={setAnswer}
-    front={game.front}
-    answer={answer} />)}</Main>
+
+  const deleteCurrentGame = () => {
+    const deleteCurrentGame = async () => {
+      const isGameDeleted = await GameLoopService.deleteCurrentGame();
+      if (isGameDeleted) {
+        const game = {} as Game;
+        dispatch({ type: 'delete-current-game', game })
+      }
+    }
+    deleteCurrentGame()
+  }
+
+  return <Main>{!game.solved ?
+    (<InitialGameComponent startNewGame={startNewGame} />)
+    : game.solved.length > 2 ?
+      <GameSummaryComponent
+        game={game}
+        startNewGame={startNewGame}
+        deleteCurrentGame={deleteCurrentGame} />
+      : (<QuestionComponent submit={submit}
+        setAnswer={setAnswer}
+        deleteCurrentGame={deleteCurrentGame}
+        front={game.front}
+        answer={answer} />)}</Main>
 }
 
 const Main = styled.main`

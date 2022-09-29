@@ -67,10 +67,24 @@ async function SetAnswerForCurrentCard(answer: Answer) {
 }
 
 async function deleteCurrentGame() {
-    const response = await fetch('http://localhost:3003/api/game', { method: 'DELETE' });
-    const data = await response.json();
+    try {
+        const options = {
+            method: 'DELETE',
+            headers: new Headers({ accept: 'application/json', 'content-type': 'application/json', })
+        };
 
-    console.log(data);
+        const response = await fetch(Url, options);
+
+        if (!response.ok) {
+            throw new Error(`Error! status: ${response.status}`);
+        }
+        else {
+            return response.ok
+        }
+
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 

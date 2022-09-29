@@ -14,6 +14,11 @@ grid-column: 1 / -1;
   font-size: 50px;
   justify-self: center;
   border-radius: 10px;
+  cursor:pointer;
+  &:hover {
+    background-color: rgba(150, 250, 228);
+    color: black;
+}
 `
 
 export const Button = ({ onClick, disabled, children }: Props) => {
