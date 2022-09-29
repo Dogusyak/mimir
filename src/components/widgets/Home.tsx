@@ -11,6 +11,7 @@ import { Game } from 'models/GameModel'
 export function Home() {
 
   const [answer, setAnswer] = useState<string>('')
+  const [index, setIndex] = useState<number>(0)
   const { game, dispatch } = useContext(GameLoopContext)
 
   const submit = (answer: Answer) => {
@@ -49,18 +50,20 @@ export function Home() {
     deleteCurrentGame()
   }
 
-  return <Main>{!game.solved ?
-    (<InitialGameComponent startNewGame={startNewGame} />)
-    : game.solved.length > 2 ?
-      <GameSummaryComponent
-        game={game}
-        startNewGame={startNewGame}
-        deleteCurrentGame={deleteCurrentGame} />
-      : (<QuestionComponent submit={submit}
-        setAnswer={setAnswer}
-        deleteCurrentGame={deleteCurrentGame}
-        front={game.front}
-        answer={answer} />)}</Main>
+  return <Main>{
+    !game.solved ?
+      (<InitialGameComponent startNewGame={startNewGame} />)
+      : game.solved.length > 2 ?
+        <GameSummaryComponent
+          game={game}
+          startNewGame={startNewGame}
+          deleteCurrentGame={deleteCurrentGame} />
+        : (<QuestionComponent submit={submit}
+          setAnswer={setAnswer}
+          deleteCurrentGame={deleteCurrentGame}
+          front={game.front}
+          answer={answer}
+          questionNumber={game.solved.length} />)}</Main>
 }
 
 const Main = styled.main`
