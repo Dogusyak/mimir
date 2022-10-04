@@ -9,7 +9,7 @@ interface AppState extends State {
 
 const initialState: AppState = {
   ...InitialAppState,
-  dispatch: (action: Action) => {}
+  dispatch: (action: Action) => { }
 }
 
 export const GameLoopContext = createContext<AppState>(initialState)

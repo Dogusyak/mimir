@@ -4,10 +4,6 @@ import { AppBarButton } from '../controls/AppBarButton'
 import { QueryNavLink } from '../../helpers/QueryNavLink'
 import { GameLoopContext } from 'store/gameLoopContext'
 
-interface Props {
-  newGame: () => void
-}
-
 const Bar = styled.div`
   background: lightblue;
   padding: 10px;
@@ -34,7 +30,7 @@ export const AppBar = () => {
       case 2:
       case 3:
         {
-          text = "Solve #" +  index ;
+          text = "Solve #" + index;
           break;
         }
       case 4: {

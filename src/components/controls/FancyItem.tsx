@@ -7,6 +7,6 @@ margin: 5px 0;
 
 export const FancyItem = () => {
     return (
-        <StyledFancyList/>
+        <StyledFancyList />
     )
 }

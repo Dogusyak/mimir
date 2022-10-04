@@ -1,8 +1,8 @@
 import styled, { css, createGlobalStyle } from 'styled-components/macro'
 
 interface Props {
-	disabled?: boolean
-	children: string
+  disabled?: boolean
+  children: string
 }
 
 const StyledButton = styled.button`
@@ -21,15 +21,15 @@ const StyledButton = styled.button`
 `
 
 export const AppBarButton = ({ disabled, children }: Props) => {
-	let className = 'button'
+  let className = 'button'
 
-	if (disabled) {
-		className += ' button--disabled'
-	}
+  if (disabled) {
+    className += ' button--disabled'
+  }
 
-	return (
-		<StyledButton disabled={disabled} className={className}>
-			{children}
-		</StyledButton>
-	)
+  return (
+    <StyledButton disabled={disabled} className={className}>
+      {children}
+    </StyledButton>
+  )
 }

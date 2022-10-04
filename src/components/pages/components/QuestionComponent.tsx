@@ -9,7 +9,7 @@ interface Props {
   deleteCurrentGame: () => void
   front: string
   answer: string
-  questionNumber:number
+  questionNumber: number
 }
 
 function determineProgress(questionNumber: Number) {
@@ -27,11 +27,11 @@ function determineProgress(questionNumber: Number) {
 
 export function QuestionComponent(props: Props) {
 
-  const progressPercentage = determineProgress(props.questionNumber );
-  const progress = 'Progress ' + progressPercentage+ '%'
+  const progressPercentage = determineProgress(props.questionNumber);
+  const progress = 'Progress ' + progressPercentage + '%'
   return (
     <>
-      <Label>{ progress}</Label>
+      <Label>{progress}</Label>
       <Button onClick={() => props.deleteCurrentGame()}>Delete Game</Button>
       <QuestionForm submit={props.submit}
         setAnswer={props.setAnswer}

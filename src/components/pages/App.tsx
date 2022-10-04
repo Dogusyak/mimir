@@ -18,20 +18,20 @@ function App() {
   It means game will also be on its last state.
   */
   useEffect(() => {
-		console.log('game mounted ')
-		const onMount = async () => {
-			const response = await GameLoopService.getCurrentGame()
+    console.log('game mounted ')
+    const onMount = async () => {
+      const response = await GameLoopService.getCurrentGame()
       if (response) {
         const game = response;
         dispatch({ type: 'set-current-game', game })
       }
-		}
-		onMount()
+    }
+    onMount()
 
-		return () => {
-			console.log('game unmounted')
-		}
-	}, []);
+    return () => {
+      console.log('game unmounted')
+    }
+  }, []);
 
   return (
     <>

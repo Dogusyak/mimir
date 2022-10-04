@@ -8,6 +8,6 @@ export interface Solved {
     id: string
     front: string
     back: string
-    answer:string
+    answer: string
     accepted: boolean
 }

@@ -1,7 +1,7 @@
 export interface Card {
 	id: string
 	front: string
-    back: string
+	back: string
 }
 
 export type CardContextType = {

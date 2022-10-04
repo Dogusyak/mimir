@@ -1,5 +1,5 @@
 import styled, { css, createGlobalStyle } from 'styled-components/macro'
-import {Button} from './../../controls/Button'
+import { Button } from './../../controls/Button'
 
 const Container = styled.div`
   display: grid;
@@ -8,8 +8,8 @@ const Container = styled.div`
 `
 
 const Color = {
-    Blue: 'blue'
-  }
+  Blue: 'blue'
+}
 
 const Message = styled.div`
   grid-column: 1 / -1;
@@ -20,16 +20,16 @@ const Message = styled.div`
 `
 
 interface Props {
-	startNewGame: () => void
+  startNewGame: () => void
 }
 
-export const InitialGameComponent= ({ startNewGame}: Props) => {
-    return (
-      <>
-        <Container>
-        <Button onClick={()=>startNewGame()}>Start New Game</Button>
-         <Message>No running game.</Message>
-        </Container>
-      </>
-    )
-  }
+export const InitialGameComponent = ({ startNewGame }: Props) => {
+  return (
+    <>
+      <Container>
+        <Button onClick={() => startNewGame()}>Start New Game</Button>
+        <Message>No running game.</Message>
+      </Container>
+    </>
+  )
+}

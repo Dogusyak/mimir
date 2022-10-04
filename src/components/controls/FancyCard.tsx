@@ -12,6 +12,6 @@ border-radius: 5px;
 export const FancyCard = ({ children }: Props) => {
 
     return (
-        <StyledCard>    {children}</StyledCard>
+        <StyledCard>{children}</StyledCard>
     )
 }

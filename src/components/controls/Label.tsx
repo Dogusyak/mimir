@@ -17,9 +17,7 @@ opacity: 0.6;
 `
 
 export const Label = ({ children }: Props) => {
-
     let className = 'label'
-
 
     return (
         <StyledLabel className={className}>

@@ -1,6 +1,5 @@
 import styled from 'styled-components/macro'
 
-
 const StyledContainer = styled.div`
 margin-top:20px;
   padding: 0 16px;
@@ -10,7 +9,7 @@ margin-top:20px;
 `
 
 export const Container = () => {
-    return (
-        <StyledContainer/>
-    )
+  return (
+    <StyledContainer />
+  )
 }

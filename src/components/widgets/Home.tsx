@@ -11,7 +11,6 @@ import { Game } from 'models/GameModel'
 export function Home() {
 
   const [answer, setAnswer] = useState<string>('')
-  const [index, setIndex] = useState<number>(0)
   const { game, dispatch } = useContext(GameLoopContext)
 
   const submit = (answer: Answer) => {

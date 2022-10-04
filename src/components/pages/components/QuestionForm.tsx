@@ -1,7 +1,6 @@
 import styled from 'styled-components/macro'
 import { Button } from '../../controls/Button'
 import { TextInput } from 'components/controls/TextInput'
-import { Card } from '../../../models/CardModel'
 import { Answer } from 'models/AnswerModel'
 import { FancyCard } from 'components/controls/FancyCard'
 

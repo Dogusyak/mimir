@@ -1,4 +1,3 @@
-import { Card } from "models/CardModel";
 import { Answer } from "models/AnswerModel";
 
 const Url = 'http://localhost:3003/api/game';
@@ -47,23 +46,23 @@ async function startANewGame() {
 async function SetAnswerForCurrentCard(answer: Answer) {
     try {
         const options = {
-          method: 'PATCH',
-          headers: new Headers({ accept: 'application/json', 'content-type': 'application/json', }),
-          body: JSON.stringify(answer),
+            method: 'PATCH',
+            headers: new Headers({ accept: 'application/json', 'content-type': 'application/json', }),
+            body: JSON.stringify(answer),
         };
-    
+
         const response = await fetch(Url, options);
-    
+
         if (!response.ok) {
-          throw new Error(`Error! status: ${response.status}`);
+            throw new Error(`Error! status: ${response.status}`);
         }
         else {
-          return response.json();
+            return response.json();
         }
-    
-      } catch (err) {
+
+    } catch (err) {
         console.log(err);
-      }
+    }
 }
 
 async function deleteCurrentGame() {
