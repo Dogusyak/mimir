@@ -1,6 +1,6 @@
 import { Game, Solved } from "models/GameModel"
 import { Button } from './../../controls/Button'
-import {Table} from './../../controls/Table'
+import {Table, TableHeader, TableBody, TableRow} from '../../controls/TableControls'
 
 interface Props {
   deleteCurrentGame: () => void
@@ -9,30 +9,34 @@ interface Props {
 }
 
 const generateTable = (values: Solved[]) => {
-  const table = <table id="summaryTable">
-    {generateTableHeaders()}
-    {generateTableBody(values)}
-  </table>
+  const table = <Table id="summaryTable">
+    <TableHeader id="summaryTableHeader">
+      {generateTableHeaders()}
+    </TableHeader>
+    <TableBody id="summaryTableBody">
+      {generateTableBody(values)}
+    </TableBody>
+  </Table>
   return table;
 }
 
 const generateTableHeaders = () => {
-  return <tr>
+  return <TableRow id="headerRow">
     <th>Front</th>
     <th>Back</th>
     <th>Your Answer</th>
     <th>Accepted</th>
-  </tr>
+  </TableRow>
 }
 
 function generateTableBody(values: Solved[]) {
   return values.map((value => (
-      <tr>
+      <TableRow id={value.id}>
         <td>{value.front}</td>
         <td>{value.back}</td>
         <td>{value.answer}</td>
-        <td>{value.accepted ? 'ok' : 'X'}</td>
-      </tr>
+        <td>{value.accepted ? 'OK' : 'X'}</td>
+      </TableRow>
   )))
 }
 

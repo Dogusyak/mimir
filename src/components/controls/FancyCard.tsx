@@ -12,6 +12,8 @@ export const FancyCard = ({ children }: Props) => {
 }
 
 const StyledCard = styled.div`
-background: #ff0000;
+background: rgba(70, 47, 156, 0.1) ;
 border-radius: 5px;
+font-weight: bold;
+font-size: 3em;
 `

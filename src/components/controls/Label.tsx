@@ -24,4 +24,5 @@ justify-self: left;
 font-size: 35px;
 color: ${Color.Blue};
 opacity: 0.6;
+font-size: 3em;
 `
