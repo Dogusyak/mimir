@@ -1,12 +1,17 @@
 import styled, { css, createGlobalStyle } from 'styled-components/macro'
 
-const StyledFancyList = styled.li`
-font-family: sans-serif;
-margin: 5px 0;
-`
+interface Props {
+    children: React.ReactNode
+}
 
-export const FancyItem = () => {
+export const FancyItem = ({children}:Props) => {
     return (
-        <StyledFancyList />
+        <StyledFancyList>{children}</StyledFancyList>
     )
 }
+
+const StyledFancyList = styled.li`
+font-family: sans-serif;
+margin: 5px 20px;
+padding:10px;
+`

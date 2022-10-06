@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro'
+import { Container } from '../../controls/Container'
 import { Button } from '../../controls/Button'
 import { TextInput } from 'components/controls/TextInput'
 import { Card } from '../../../models/CardModel'
@@ -35,11 +35,3 @@ export const CardForm = (props: Props) => {
     </Container>
   )
 }
-
-const Container = styled.div`
-margin-top:20px;
-  padding: 0 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-`

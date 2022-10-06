@@ -2,7 +2,7 @@ import styled from 'styled-components/macro'
 
 interface Props {
     id: string
-    children: string[]
+    children: React.ReactNode
 }
 const StyledTable = styled.table`
 border: 1px solid lightblue;
@@ -22,10 +22,10 @@ export const Table = ({ id, children }: Props) => {
     return (
         <StyledTable id={id}>
             <StyledTableHeader>
-                {children[0]}
+                {children}
             </StyledTableHeader>
             <StyledTableBody>
-                {children[1]}
+                {children}
             </StyledTableBody>
         </StyledTable>
     )
