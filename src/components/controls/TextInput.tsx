@@ -6,6 +6,15 @@ interface Props {
 	placeholder?: string
 }
 
+export const TextInput = ({ onChange, value, placeholder }: Props) => (
+	<TextInputStyle
+		type="text"
+		onChange={e => onChange(e.target.value)}
+		value={value}
+		placeholder={placeholder}
+	/>
+)
+
 const TextInputStyle = styled.input`
 flex: 1;
 height: 40px;
@@ -18,12 +27,3 @@ font-size: 25px;
 	border-color: #2b7a78;
 }
 `
-
-export const TextInput = ({ onChange, value, placeholder }: Props) => (
-	<TextInputStyle
-		type="text"
-		onChange={e => onChange(e.target.value)}
-		value={value}
-		placeholder={placeholder}
-	/>
-)

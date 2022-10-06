@@ -1,7 +1,17 @@
-import styled, { css, createGlobalStyle } from 'styled-components/macro'
+import styled from 'styled-components/macro'
 
 interface Props {
     children: string
+}
+
+export const Label = ({ children }: Props) => {
+    let className = 'label'
+
+    return (
+        <StyledLabel className={className}>
+            {children}
+        </StyledLabel>
+    )
 }
 
 const Color = {
@@ -15,13 +25,3 @@ font-size: 35px;
 color: ${Color.Blue};
 opacity: 0.6;
 `
-
-export const Label = ({ children }: Props) => {
-    let className = 'label'
-
-    return (
-        <StyledLabel className={className}>
-            {children}
-        </StyledLabel>
-    )
-}

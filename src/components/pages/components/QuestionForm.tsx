@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro'
+import { DownUnderContainer } from '../../controls/DownUnderContainer'
 import { Button } from '../../controls/Button'
 import { TextInput } from 'components/controls/TextInput'
 import { Answer } from 'models/AnswerModel'
@@ -19,18 +19,10 @@ export const QuestionForm = (props: Props) => {
     }
 
     return (
-        <Container>
+        <DownUnderContainer>
             <FancyCard>{props.front}</FancyCard>
             <TextInput value={props.answer} onChange={e => props.setAnswer(e)} placeholder="Answer" />
             <Button onClick={submit}>Submit</Button>
-        </Container>
+        </DownUnderContainer>
     )
 }
-
-const Container = styled.div`
-margin-top:20px;
-  padding: 0 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-`

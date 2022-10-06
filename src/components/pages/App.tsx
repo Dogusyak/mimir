@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import GameLoopService from 'services/GameLoopService'
 import { GameLoopContext } from 'store/gameLoopContext'
 import { Routes, Route } from 'react-router-dom'

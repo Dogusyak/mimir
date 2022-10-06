@@ -11,9 +11,11 @@ export const Container = ({ children }: Props) => {
 }
 
 const StyledContainer = styled.div`
+justify-content: space-between;
 margin-top:20px;
-  padding: 0 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+margin-bottom:20px;
+padding: 0 16px;
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
 `

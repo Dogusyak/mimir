@@ -2,6 +2,7 @@ import { Answer } from "models/AnswerModel"
 import { Button } from './../../controls/Button'
 import { QuestionForm } from "./QuestionForm"
 import { Label } from '../../controls/Label'
+import { Container } from '../../controls/Container'
 
 interface Props {
   submit: (answer: Answer) => void
@@ -31,8 +32,10 @@ export function QuestionComponent(props: Props) {
   const progress = 'Progress ' + progressPercentage + '%'
   return (
     <>
-      <Label>{progress}</Label>
-      <Button onClick={() => props.deleteCurrentGame()}>Delete Game</Button>
+      <Container>
+        <Label>{progress}</Label>
+        <Button onClick={() => props.deleteCurrentGame()}>Delete Game</Button>
+      </Container>
       <QuestionForm submit={props.submit}
         setAnswer={props.setAnswer}
         front={props.front}
