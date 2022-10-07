@@ -11,6 +11,8 @@ border-radius: 10px;
 display: grid;
 gap: 1px;
 background: rgba(70, 47, 156, 0.1) ;
+justify-content: center;
+vertical-align: middle;
 `
 const StyledTableHeader = styled.thead`
 border: 1px solid red;
@@ -26,6 +28,16 @@ font-size: 30px;
 
 const StyledTableRow = styled.tr`
 border: 1px solid black;
+border-radius: 5px;
+`
+
+const StyledRowCell = styled.td`
+border: 2px solid grey;
+border-radius: 5px;
+`
+
+const StyledHeaderCell = styled.th`
+border: 2px solid grey;
 border-radius: 5px;
 `
 
@@ -53,10 +65,26 @@ export const TableBody = ({ id, children }: Props) => {
     )
 }
 
-export const TableRow= ({ id, children }: Props) => {
+export const TableRow = ({ id, children }: Props) => {
     return (
         <StyledTableRow id={id}>
             {children}
         </StyledTableRow>
+    )
+}
+
+export const RowCell = ({ id, children }: Props) => {
+    return (
+        <StyledRowCell id={id}>
+            {children}
+        </StyledRowCell>
+    )
+}
+
+export const HeaderCell = ({ id, children }: Props) => {
+    return (
+        <StyledHeaderCell id={id}>
+            {children}
+        </StyledHeaderCell>
     )
 }

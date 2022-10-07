@@ -1,6 +1,7 @@
 import { Game, Solved } from "models/GameModel"
 import { Button } from './../../controls/Button'
-import {Table, TableHeader, TableBody, TableRow} from '../../controls/TableControls'
+import { DownUnderContainer } from '../../controls/DownUnderContainer'
+import { Table, TableHeader, TableBody, TableRow, RowCell, HeaderCell } from '../../controls/TableControls'
 
 interface Props {
   deleteCurrentGame: () => void
@@ -9,7 +10,7 @@ interface Props {
 }
 
 const generateTable = (values: Solved[]) => {
-  const table = <Table id="summaryTable">
+  return <Table id="summaryTable">
     <TableHeader id="summaryTableHeader">
       {generateTableHeaders()}
     </TableHeader>
@@ -17,35 +18,35 @@ const generateTable = (values: Solved[]) => {
       {generateTableBody(values)}
     </TableBody>
   </Table>
-  return table;
 }
 
 const generateTableHeaders = () => {
   return <TableRow id="headerRow">
-    <th>Front</th>
-    <th>Back</th>
-    <th>Your Answer</th>
-    <th>Accepted</th>
+    <HeaderCell id="frontHeader">Front</HeaderCell>
+    <HeaderCell id="yourAnswerHeader">Your Answer</HeaderCell>
+    <HeaderCell id="backHeader">Back</HeaderCell>
+    <HeaderCell id="acceptedHeader">Accepted</HeaderCell>
   </TableRow>
 }
 
 function generateTableBody(values: Solved[]) {
   return values.map((value => (
-      <TableRow id={value.id}>
-        <td>{value.front}</td>
-        <td>{value.back}</td>
-        <td>{value.answer}</td>
-        <td>{value.accepted ? 'OK' : 'X'}</td>
-      </TableRow>
+    <TableRow id={value.id}>
+      <RowCell id={value.id + value.front}>{value.front}</RowCell>
+      <RowCell id={value.id + value.back}>{value.back}</RowCell>
+      <RowCell id={value.id + value.answer}>{value.answer.trim().length === 0 ? 'no answer' : value.answer}</RowCell>
+      <RowCell id={value.id + value.accepted}>{value.accepted ? 'OK' : 'X'}</RowCell>
+    </TableRow>
   )))
 }
 
 export function GameSummaryComponent(props: Props) {
-  const table = generateTable(props.game.solved);
   return (
     <>
+    <DownUnderContainer>
       <Button onClick={() => props.startNewGame()}>Start New Game</Button>
       {generateTable(props.game.solved)}
+      </DownUnderContainer>
     </>
   )
 }
