@@ -4,37 +4,6 @@ interface Props {
     id: string
     children: React.ReactNode
 }
-const StyledTable = styled.table`
- margin-top:20px;
- display: grid;
- gap: 20px;
- justify-content: center;
- vertical-align: middle;
-`
-const StyledTableHeader = styled.thead`
- font-size: 25px;
- width: 800px;
-`
-
-const StyledTableBody = styled.tbody`
- font-size: 25px;
-`
-
-const StyledTableRow = styled.tr`
- border: 1px solid black;
- border-radius: 5px;
-`
-
-const StyledRowCell = styled.td`
- width: 200px;
- text-align: left;
- padding-bottom: 15px;
-`
-
-const StyledHeaderCell = styled.th`
- width: 200px;
- text-align: left;
-`
 
 export const Table = ({ id, children }: Props) => {
     return (
@@ -83,3 +52,35 @@ export const HeaderCell = ({ id, children }: Props) => {
         </StyledHeaderCell>
     )
 }
+
+const StyledTable = styled.table`
+ margin-top:20px;
+ display: grid;
+ gap: 20px;
+ justify-content: center;
+ vertical-align: middle;
+`
+const StyledTableHeader = styled.thead`
+ font-size: 25px;
+ width: 800px;
+`
+
+const StyledTableBody = styled.tbody`
+ font-size: 25px;
+`
+
+const StyledTableRow = styled.tr`
+ border: 1px solid black;
+ border-radius: 5px;
+`
+
+const StyledRowCell = styled.td`
+ width: 200px;
+ text-align: left;
+ padding-bottom: 15px;
+`
+
+const StyledHeaderCell = styled.th`
+ width: 200px;
+ text-align: left;
+`

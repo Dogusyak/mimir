@@ -4,10 +4,12 @@ type SetCurrentGame = {
     type: 'set-current-game'
     game: Game
 }
+
 type StartANewGame = {
     type: 'start-a-new-game'
     game: Game
 }
+
 type SetAnswerForCurrentCard = {
     type: 'set-answer-for-current-card'
     game: Game

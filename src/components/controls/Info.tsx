@@ -10,7 +10,7 @@ export const Info = ({ children }: Props) => {
     )
 }
 
-const Color = {
+const Color = { // It is also possible to define color with a constant and use with string concatination.
     Black: 'black'
 }
 

@@ -1,12 +1,13 @@
 import { Card } from "models/CardModel";
 
 const Url = 'http://localhost:3003/api/cards';
+const Head = { accept: 'application/json', 'content-type': 'application/json' }
 
 async function getCards() {
   try {
     const options = {
       method: 'GET',
-      headers: new Headers({ accept: 'application/json', 'content-type': 'application/json', }),
+      headers: new Headers(Head),
     };
 
     const response = await fetch(Url, options);
@@ -26,7 +27,7 @@ async function addCard(card: Card) {
   try {
     const options = {
       method: 'POST',
-      headers: new Headers({ accept: 'application/json', 'content-type': 'application/json', }),
+      headers: new Headers(Head),
       body: JSON.stringify(card),
     };
 
@@ -51,7 +52,7 @@ async function updateCard(card: Card) {
 
     const options = {
       method: 'PUT',
-      headers: new Headers({ accept: 'application/json', 'content-type': 'application/json', }),
+      headers: new Headers(Head),
       body: JSON.stringify(card),
     };
 
@@ -73,7 +74,7 @@ async function deleteCard(card: Card) {
 
   const options = {
     method: 'DELETE',
-    headers: new Headers({ accept: 'application/json', 'content-type': 'application/json', }),
+    headers: new Headers(Head),
     body: JSON.stringify(card),
   };
 

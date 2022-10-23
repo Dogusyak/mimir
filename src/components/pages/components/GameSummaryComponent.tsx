@@ -1,8 +1,8 @@
-import {Game, Solved} from "models/GameModel"
-import {ButtonWide} from './../../controls/Button'
-import {DownUnderContainerSummary} from '../../controls/DownUnderContainer'
-import {Table, TableHeader, TableBody, TableRow, RowCell, HeaderCell} from '../../controls/TableControls'
-import {Info} from "../../controls/Info";
+import { Game, Solved } from "models/GameModel"
+import { ButtonWide } from './../../controls/Button'
+import { DownUnderContainerSummary } from '../../controls/DownUnderContainer'
+import { Table, TableHeader, TableBody, TableRow, RowCell, HeaderCell } from '../../controls/TableControls'
+import { Info } from "../../controls/Info";
 
 interface Props {
     deleteCurrentGame: () => void
@@ -33,13 +33,21 @@ const generateTableHeaders = () => {
 function generateTableBody(values: Solved[]) {
     return values.map((value => (
         <TableRow id={value.id}>
-            <RowCell id={value.id + value.front}>{value.front}</RowCell>
-            <RowCell id={value.id + value.back}>{value.back}</RowCell>
+            <RowCell id={value.id}>{value.front}</RowCell>
+            <RowCell id={value.id}>{value.back}</RowCell>
             <RowCell
-                id={value.id + value.answer}>{value.answer.trim().length === 0 ? 'no answer' : value.answer}</RowCell>
-            <RowCell id={value.id + value.accepted}>{value.accepted ? <i>✔</i> : <i>❌</i> }</RowCell>
+                id={value.id}>{value.answer.trim().length === 0 ? 'no answer' : value.answer}</RowCell>
+            <RowCell id={value.id + value.accepted}>{value.accepted ? '✔️' : '❌'}</RowCell>
         </TableRow>
     )))
+}
+
+function determineCountOfCorrectAnswers(values: Solved[]) {
+    let count = 0;
+    values.forEach(value => (
+        value.accepted ? count++ : count
+    ))
+    return count;
 }
 
 export function GameSummaryComponent(props: Props) {
@@ -47,7 +55,7 @@ export function GameSummaryComponent(props: Props) {
         <>
             <DownUnderContainerSummary>
                 <ButtonWide onClick={() => props.startNewGame()}>Start New Game</ButtonWide>
-                <Info>Solved {} out of 3 correctly.</Info>
+                <Info>Solved {determineCountOfCorrectAnswers(props.game.solved)} out of {props.game.solved ? props.game.solved.length : 3} correctly.</Info>
                 {generateTable(props.game.solved)}
             </DownUnderContainerSummary>
         </>

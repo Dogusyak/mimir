@@ -29,4 +29,6 @@ const StyledContainer = styled.div`
 
 const StyledContainerAddCard = styled(StyledContainer)`
 border-bottom-style: none;
+padding-left: 50px;
+padding-right: 50px;
 `

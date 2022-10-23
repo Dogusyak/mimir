@@ -1,4 +1,4 @@
-import styled, {css, createGlobalStyle} from 'styled-components/macro'
+import styled from 'styled-components/macro'
 
 interface Props {
     onChange: (value: string) => void
@@ -6,7 +6,7 @@ interface Props {
     placeholder?: string
 }
 
-export const TextInput = ({onChange, value, placeholder}: Props) => (
+export const TextInput = ({ onChange, value, placeholder }: Props) => (
     <TextInputStyle
         type="text"
         onChange={e => onChange(e.target.value)}

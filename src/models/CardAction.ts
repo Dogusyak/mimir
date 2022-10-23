@@ -4,10 +4,12 @@ type SetCardsAction = {
   type: 'set-cards'
   cards: Card[]
 }
+
 type AddCardAction = {
   type: 'add-card'
   card: Card
 }
+
 type UpdateCardAction = {
   type: 'update-card'
   card: Card

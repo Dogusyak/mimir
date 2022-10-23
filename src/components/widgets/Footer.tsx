@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro'
 
 export function Footer() {
-  return <Banner>Ost Copyright 2022</Banner>
+  return <Banner>Copyright Ost 2022</Banner>
 }
 
 const Banner = styled.div`

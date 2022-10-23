@@ -1,8 +1,8 @@
 import { Answer } from "models/AnswerModel"
-import {Button, ButtonWide} from './../../controls/Button'
+import { ButtonWide } from './../../controls/Button'
 import { QuestionForm } from "./QuestionForm"
 import { Label } from '../../controls/Label'
-import {Container, ContainerAddCard} from '../../controls/Container'
+import { ContainerAddCard } from '../../controls/Container'
 
 interface Props {
   submit: (answer: Answer) => void
@@ -11,24 +11,16 @@ interface Props {
   front: string
   answer: string
   questionNumber: number
+  cardCount: number
 }
 
-function determineProgress(questionNumber: Number) {
-  switch (questionNumber) {
-    case 0:
-      return 0;
-    case 1:
-      return 33;
-    case 2:
-      return 67;
-    default:
-      return -1;
-  }
+function determineProgress(questionNumber: number, cardCount: number) {
+  return Math.round(100 / cardCount * questionNumber);
 }
 
 export function QuestionComponent(props: Props) {
 
-  const progressPercentage = determineProgress(props.questionNumber);
+  const progressPercentage = determineProgress(props.questionNumber, props.cardCount);
   const progress = 'Progress ' + progressPercentage + '%'
   return (
     <>

@@ -26,7 +26,7 @@ export function Home() {
 
   const startNewGame = () => {
     const startNewGame = async () => {
-      if (game) {
+      if (game.cardCount) {
         deleteCurrentGame();
       }
       const response = await GameLoopService.startANewGame();
@@ -52,7 +52,7 @@ export function Home() {
   return <Main>{
     !game.solved ?
       (<InitialGameComponent startNewGame={startNewGame} />)
-      : game.solved.length > 2 ?
+      : game.solved.length === game.cardCount ?
         <GameSummaryComponent
           game={game}
           startNewGame={startNewGame}
@@ -62,7 +62,9 @@ export function Home() {
           deleteCurrentGame={deleteCurrentGame}
           front={game.front}
           answer={answer}
-          questionNumber={game.solved.length} />)}</Main>
+          questionNumber={game.solved.length}
+          cardCount={game.cardCount}
+        />)}</Main>
 }
 
 const Main = styled.main`

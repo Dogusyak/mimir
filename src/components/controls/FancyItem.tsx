@@ -10,6 +10,6 @@ export const FancyItem = ({children}: Props) => {
     )
 }
 
-const StyledFancyItem = styled.div` //styled.li
+const StyledFancyItem = styled.div`
 
 `

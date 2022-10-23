@@ -8,7 +8,7 @@ import { Cards } from './Cards';
 import { CardEdit } from './CardEdit';
 
 function App() {
-  const { game, dispatch } = useContext(GameLoopContext)
+  const { dispatch } = useContext(GameLoopContext)
 
   /*
   If user refreshes the browser either on cards page or on game page,

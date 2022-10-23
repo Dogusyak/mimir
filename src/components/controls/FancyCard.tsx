@@ -27,10 +27,3 @@ const StyledCard = styled.div`
  padding-top: 120px;
  padding-bottom: 120px;
 `
-
-/*
- padding-left: 200px;
- padding-right: 200px;
- padding-top: 120px;
- padding-bottom: 120px;
- */

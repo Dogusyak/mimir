@@ -1,12 +1,13 @@
 import { Answer } from "models/AnswerModel";
 
 const Url = 'http://localhost:3003/api/game';
+const Head = { accept: 'application/json', 'content-type': 'application/json' }
 
 async function getCurrentGame() {
     try {
         const options = {
             method: 'GET',
-            headers: new Headers({ accept: 'application/json', 'content-type': 'application/json', }),
+            headers: new Headers(Head),
         };
 
         const response = await fetch(Url, options);
@@ -26,7 +27,7 @@ async function startANewGame() {
     try {
         const options = {
             method: 'POST',
-            headers: new Headers({ accept: 'application/json', 'content-type': 'application/json', })
+            headers: new Headers(Head)
         };
 
         const response = await fetch(Url, options);
@@ -47,7 +48,7 @@ async function SetAnswerForCurrentCard(answer: Answer) {
     try {
         const options = {
             method: 'PATCH',
-            headers: new Headers({ accept: 'application/json', 'content-type': 'application/json', }),
+            headers: new Headers(Head),
             body: JSON.stringify(answer),
         };
 
@@ -69,7 +70,7 @@ async function deleteCurrentGame() {
     try {
         const options = {
             method: 'DELETE',
-            headers: new Headers({ accept: 'application/json', 'content-type': 'application/json', })
+            headers: new Headers(Head)
         };
 
         const response = await fetch(Url, options);

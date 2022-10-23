@@ -24,7 +24,6 @@ export function Cards() {
 	}, []);
 
 	const add = (card: Card) => {
-
 		const add = async () => {
 			const response = await CardService.addCard(card);
 			if (response) {
