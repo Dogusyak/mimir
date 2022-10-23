@@ -1,6 +1,6 @@
 import { DownUnderContainer } from '../../controls/DownUnderContainer'
 import { Button } from '../../controls/Button'
-import { TextInput } from 'components/controls/TextInput'
+import {TextInput } from 'components/controls/TextInput'
 import { Answer } from 'models/AnswerModel'
 import { FancyCard } from 'components/controls/FancyCard'
 

@@ -1,52 +1,55 @@
-import { Game, Solved } from "models/GameModel"
-import { Button } from './../../controls/Button'
-import { DownUnderContainer } from '../../controls/DownUnderContainer'
-import { Table, TableHeader, TableBody, TableRow, RowCell, HeaderCell } from '../../controls/TableControls'
+import {Game, Solved} from "models/GameModel"
+import {ButtonWide} from './../../controls/Button'
+import {DownUnderContainerSummary} from '../../controls/DownUnderContainer'
+import {Table, TableHeader, TableBody, TableRow, RowCell, HeaderCell} from '../../controls/TableControls'
+import {Info} from "../../controls/Info";
 
 interface Props {
-  deleteCurrentGame: () => void
-  startNewGame: () => void
-  game: Game
+    deleteCurrentGame: () => void
+    startNewGame: () => void
+    game: Game
 }
 
 const generateTable = (values: Solved[]) => {
-  return <Table id="summaryTable">
-    <TableHeader id="summaryTableHeader">
-      {generateTableHeaders()}
-    </TableHeader>
-    <TableBody id="summaryTableBody">
-      {generateTableBody(values)}
-    </TableBody>
-  </Table>
+    return <Table id="summaryTable">
+        <TableHeader id="summaryTableHeader">
+            {generateTableHeaders()}
+        </TableHeader>
+        <TableBody id="summaryTableBody">
+            {generateTableBody(values)}
+        </TableBody>
+    </Table>
 }
 
 const generateTableHeaders = () => {
-  return <TableRow id="headerRow">
-    <HeaderCell id="frontHeader">Front</HeaderCell>
-    <HeaderCell id="yourAnswerHeader">Your Answer</HeaderCell>
-    <HeaderCell id="backHeader">Back</HeaderCell>
-    <HeaderCell id="acceptedHeader">Accepted</HeaderCell>
-  </TableRow>
+    return <TableRow id="headerRow">
+        <HeaderCell id="frontHeader">Front</HeaderCell>
+        <HeaderCell id="backHeader">Back</HeaderCell>
+        <HeaderCell id="yourAnswerHeader">Your Answer</HeaderCell>
+        <HeaderCell id="acceptedHeader">Accepted</HeaderCell>
+    </TableRow>
 }
 
 function generateTableBody(values: Solved[]) {
-  return values.map((value => (
-    <TableRow id={value.id}>
-      <RowCell id={value.id + value.front}>{value.front}</RowCell>
-      <RowCell id={value.id + value.back}>{value.back}</RowCell>
-      <RowCell id={value.id + value.answer}>{value.answer.trim().length === 0 ? 'no answer' : value.answer}</RowCell>
-      <RowCell id={value.id + value.accepted}>{value.accepted ? 'OK' : 'X'}</RowCell>
-    </TableRow>
-  )))
+    return values.map((value => (
+        <TableRow id={value.id}>
+            <RowCell id={value.id + value.front}>{value.front}</RowCell>
+            <RowCell id={value.id + value.back}>{value.back}</RowCell>
+            <RowCell
+                id={value.id + value.answer}>{value.answer.trim().length === 0 ? 'no answer' : value.answer}</RowCell>
+            <RowCell id={value.id + value.accepted}>{value.accepted ? <i>✔</i> : <i>❌</i> }</RowCell>
+        </TableRow>
+    )))
 }
 
 export function GameSummaryComponent(props: Props) {
-  return (
-    <>
-    <DownUnderContainer>
-      <Button onClick={() => props.startNewGame()}>Start New Game</Button>
-      {generateTable(props.game.solved)}
-      </DownUnderContainer>
-    </>
-  )
+    return (
+        <>
+            <DownUnderContainerSummary>
+                <ButtonWide onClick={() => props.startNewGame()}>Start New Game</ButtonWide>
+                <Info>Solved {} out of 3 correctly.</Info>
+                {generateTable(props.game.solved)}
+            </DownUnderContainerSummary>
+        </>
+    )
 }

@@ -11,13 +11,16 @@ export const Info = ({ children }: Props) => {
 }
 
 const Color = {
-    Blue: 'blue'
+    Black: 'black'
 }
 
 const Message = styled.div`
-  grid-column: 1 / -1;
-  justify-self: center;
-  font-size: 35px;
-  color: ${Color.Blue};
-  opacity: 0.6;
+ grid-column: 1 / -1;
+ padding-left: 25px;
+ padding-top: 25px;
+ padding-bottom: 20px;
+ justify-self: center;
+ font-size: 25px;
+ color: ${Color.Black};
+ opacity: 0.8;
 `

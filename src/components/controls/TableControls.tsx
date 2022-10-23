@@ -5,40 +5,35 @@ interface Props {
     children: React.ReactNode
 }
 const StyledTable = styled.table`
-margin-top:20px;
-border: 1px solid lightblue;
-border-radius: 10px;
-display: grid;
-gap: 1px;
-background: rgba(70, 47, 156, 0.1) ;
-justify-content: center;
-vertical-align: middle;
+ margin-top:20px;
+ display: grid;
+ gap: 20px;
+ justify-content: center;
+ vertical-align: middle;
 `
 const StyledTableHeader = styled.thead`
-border: 1px solid red;
-border-radius: 5px;
-font-size: 30px;
+ font-size: 25px;
+ width: 800px;
 `
 
 const StyledTableBody = styled.tbody`
-border: 1px solid red;
-border-radius: 5px;
-font-size: 30px;
+ font-size: 25px;
 `
 
 const StyledTableRow = styled.tr`
-border: 1px solid black;
-border-radius: 5px;
+ border: 1px solid black;
+ border-radius: 5px;
 `
 
 const StyledRowCell = styled.td`
-border: 2px solid grey;
-border-radius: 5px;
+ width: 200px;
+ text-align: left;
+ padding-bottom: 15px;
 `
 
 const StyledHeaderCell = styled.th`
-border: 2px solid grey;
-border-radius: 5px;
+ width: 200px;
+ text-align: left;
 `
 
 export const Table = ({ id, children }: Props) => {

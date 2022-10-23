@@ -15,14 +15,16 @@ export const Label = ({ children }: Props) => {
 }
 
 const Color = {
-    Blue: 'black'
+    Black: 'black'
 }
 
 const StyledLabel = styled.label`
-grid-column: 1 / -1;
-justify-self: left;
-font-size: 35px;
-color: ${Color.Blue};
-opacity: 0.6;
-font-size: 3em;
+ grid-column: 1 / -1;
+ justify-self: left;
+ font-weight: bold;
+ font-size: 25px;
+ font-family: sans-serif;
+ color: ${Color.Black};
+ opacity: 0.6;
+ flex: 1;
 `

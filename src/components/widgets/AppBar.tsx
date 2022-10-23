@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { AppBarButton } from '../controls/AppBarButton'
+import { AppBarButton,AppBarButtonNoBorder } from '../controls/AppBarButton'
 import { QueryNavLink } from '../../helpers/QueryNavLink'
 import { GameLoopContext } from 'store/gameLoopContext'
 import { Bar } from '../controls/Bar'
@@ -42,7 +42,7 @@ export const AppBar = () => {
     <QueryNavLink
       to="/cards"
     >
-      <AppBarButton>Manage Cards</AppBarButton>
+      <AppBarButtonNoBorder>Manage Cards</AppBarButtonNoBorder>
     </QueryNavLink>
   </Bar>
 }

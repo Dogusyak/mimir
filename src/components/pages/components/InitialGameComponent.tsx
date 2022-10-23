@@ -1,5 +1,5 @@
-import { Button } from './../../controls/Button'
-import { DownUnderContainer } from './../../controls/DownUnderContainer'
+import { ButtonWide} from './../../controls/Button'
+import { DownUnderContainerNewGame} from './../../controls/DownUnderContainer'
 import { Info } from './../../controls/Info'
 
 interface Props {
@@ -9,10 +9,10 @@ interface Props {
 export const InitialGameComponent = ({ startNewGame }: Props) => {
   return (
     <>
-      <DownUnderContainer>
-        <Button onClick={() => startNewGame()}>Start New Game</Button>
+      <DownUnderContainerNewGame>
+        <ButtonWide onClick={() => startNewGame()}>Start New Game</ButtonWide>
         <Info>No running game.</Info>
-      </DownUnderContainer>
+      </DownUnderContainerNewGame>
     </>
   )
 }

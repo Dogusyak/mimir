@@ -4,14 +4,12 @@ interface Props {
     children: React.ReactNode
 }
 
-export const FancyItem = ({children}:Props) => {
+export const FancyItem = ({children}: Props) => {
     return (
-        <StyledFancyList>{children}</StyledFancyList>
+        <StyledFancyItem>{children}</StyledFancyItem>
     )
 }
 
-const StyledFancyList = styled.li`
-font-family: sans-serif;
-margin: 5px 20px;
-padding:10px;
+const StyledFancyItem = styled.div` //styled.li
+
 `

@@ -4,7 +4,7 @@ interface Props {
     children: React.ReactNode
 }
 
-export const Header = ({ children }: Props) => {
+export const Header = ({children}: Props) => {
     return (
         <StlyedHeader>{children}</StlyedHeader>
     )
@@ -12,8 +12,7 @@ export const Header = ({ children }: Props) => {
 
 const StlyedHeader = styled.div`
   font-family: sans-serif;
-  font-weight: bold;
-  color: #815eff;
+  color: white;
   font-size: 40px;
   margin: 5px 0;
 `

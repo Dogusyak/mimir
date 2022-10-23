@@ -11,9 +11,10 @@ export const Bar = ({ children }: Props) => {
 }
 
 const StyledBar = styled.div`
-  background: lightblue;
+  background: rgba(71, 71, 71);
   padding: 10px;
   display: flex;
   gap: 10px;
   justify-content: space-between;
+  align-items:center;
 `
